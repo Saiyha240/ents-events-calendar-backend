@@ -45,3 +45,17 @@ class User(AbstractUser):
 
     username = None
     email = models.EmailField(_('email address'), unique=True)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nickname = models.CharField(max_length=255)
+    contact_number = models.CharField(max_length=13)
+    city = models.CharField(max_length=255)
+    height = models.DecimalField(decimal_places=1, max_digits=4)
+    weight = models.DecimalField(decimal_places=1, max_digits=4)
+    birthday = models.DateField()
+    gender = models.SmallIntegerField()
+    favorite_player = models.CharField(max_length=255)
+    favorite_team = models.CharField(max_length=255)
+    position = models.IntegerField()
