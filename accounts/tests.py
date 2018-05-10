@@ -63,7 +63,7 @@ class ViewTestCase(TestCase):
         """Test the api can update a given user."""
         user = User.objects.get()
         change_user = {'first_name': 'Something new'}
-        res = self.client.put(
+        res = self.client.patch(
             reverse('details', kwargs={'pk': user.id}),
             change_user,
             format='json'
