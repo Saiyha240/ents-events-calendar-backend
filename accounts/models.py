@@ -43,7 +43,7 @@ class User(AbstractUser):
 
     objects = UserManager()
 
-    username = None
+    # username = models.CharField(max_length=255, null=True, unique=True)
     email = models.EmailField(_('email address'), unique=True)
 
 
@@ -59,3 +59,9 @@ class Profile(models.Model):
     favorite_player = models.CharField(null=True, max_length=255)
     favorite_team = models.CharField(null=True, max_length=255)
     position = models.IntegerField(null=True)
+
+
+# @receiver(user_signed_up)
+# def new_user_signup(sender, **kwargs):
+#     p = Profile(user=kwargs['user'])
+#     p.save()

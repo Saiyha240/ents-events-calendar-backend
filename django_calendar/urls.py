@@ -16,8 +16,16 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_jwt.views import refresh_jwt_token
+
+from accounts.views import FacebookLogin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+    url(r'^refresh-token/', refresh_jwt_token),
+    url(r'^rest-auth/facebook/$', FacebookLogin.as_view(), name='fb_login'),
+
     url(r'^', include('accounts.urls'))
 ]
