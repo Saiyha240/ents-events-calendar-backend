@@ -80,5 +80,6 @@ modules.xml
 # Sonarlint plugin
 .idea/sonarlint
 
+.python-version
 
 # End of https://www.gitignore.io/api/django,intellij
